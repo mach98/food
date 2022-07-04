@@ -1,9 +1,9 @@
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
 import React from 'react';
 
 import RestaurantsDetail from './RestaurantsDetail';
 
-export default function ResultsList({title, priceCategory}) {
+export default function ResultsList({title, priceCategory, navigation}) {
   return (
     <View style={styles.container}>
       <Text style={styles.titleStyle}>{title}</Text>
@@ -13,7 +13,11 @@ export default function ResultsList({title, priceCategory}) {
         data={priceCategory}
         keyExtractor={result => result.id}
         renderItem={({item}) => {
-          return <RestaurantsDetail result={item} />;
+          return (
+            <TouchableOpacity onPress={() => navigation.navigate('Restaurant')}>
+              <RestaurantsDetail result={item} />
+            </TouchableOpacity>
+          );
         }}
       />
     </View>
