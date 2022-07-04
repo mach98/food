@@ -16,14 +16,13 @@ const SearchScreen = () => {
     });
   };
   return (
-    <View>
+    <View style={{flex: 1}}>
       <SearchBar
         searchTerm={searchTerm}
         onSearchTermChange={setSearchTerm}
         onSearchTermSubmit={() => searchApi(searchTerm)}
       />
       <Text>{errorMessage ? <Text>{errorMessage}</Text> : null}</Text>
-      <Text>We have found {restaurants.length} restaurants</Text>
       <ScrollView>
         <RestaurantsList
           title="Cost Effective"
